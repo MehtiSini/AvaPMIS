@@ -9,7 +9,7 @@ namespace AvaPMIS.Main.Company
         {
             builder.ToTable("Company");
 
-            builder.HasMany(c=>c.Departments)
+            builder.HasMany(c=>c.CompanyDepartments)
                 .WithOne(d => d.Company)
                 .HasForeignKey(x => x.CompanyId)
                 .IsRequired();

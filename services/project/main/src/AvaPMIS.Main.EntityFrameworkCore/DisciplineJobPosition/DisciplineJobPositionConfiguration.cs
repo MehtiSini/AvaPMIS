@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace AvaPMIS.Main.JobPosition
+namespace AvaPMIS.Main.DisciplineJobPosition
 {
-    public class DisciplineJobPositionConfiguration : IEntityTypeConfiguration<DisciplineJobPosition.DisciplineJobPosition>
+    public class DisciplineJobPositionConfiguration : IEntityTypeConfiguration<DisciplineJobPosition>
     {
-        public void Configure(EntityTypeBuilder<DisciplineJobPosition.DisciplineJobPosition> builder)
+        public void Configure(EntityTypeBuilder<DisciplineJobPosition> builder)
         {
             builder.ToTable("DisciplineJobPosition");
 

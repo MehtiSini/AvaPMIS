@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using AvaPMIS.Main.CompanyDepartment;
 using AvaPMIS.Main.Discipline;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
@@ -8,48 +9,48 @@ namespace AvaPMIS.Main.DepartmentDiscipline
 {
     public class DepartmentDisciplineDataSeeder : IDepartmentDisciplineDataSeeder, ITransientDependency
     {
-        private readonly IDepartmentDisciplineRepository _disciplineRepository;
-        private readonly IDepartmentDisciplineRepository _departmentRepository;
+        private readonly IDepartmentDisciplineRepository _departmentDisciplineRepository;
+        private readonly ICompanyDepartmentRepository _companyDepartmentRepository;
 
-        public DepartmentDisciplineDataSeeder(IDepartmentDisciplineRepository disciplineRepository, IDepartmentDisciplineRepository departmentRepository)
+        public DepartmentDisciplineDataSeeder(IDepartmentDisciplineRepository departmentDisciplineRepository, ICompanyDepartmentRepository companyDepartmentRepository)
         {
-            _disciplineRepository = disciplineRepository;
-            _departmentRepository = departmentRepository;
+            _departmentDisciplineRepository = departmentDisciplineRepository;
+            _companyDepartmentRepository = companyDepartmentRepository;
         }
 
         public async Task SeedAsync(DataSeedContext context)
         {
-            var disciplines = await _disciplineRepository.GetListAsync();
+            var departmentDisciplines = await _departmentDisciplineRepository.GetListAsync();
 
-            if (disciplines.Count == 0)
+            if (departmentDisciplines.Count == 0)
             {
-                var departments = await _departmentRepository.GetListAsync();
+                var companyDepartments = await _companyDepartmentRepository.GetListAsync();
 
                 var entities = new List<DepartmentDiscipline>
                 {
                     new() {
-                        DepartmentId = departments[0].Id,
-                        Code = "Discipline001"
+                        CompanyDepartmentId = companyDepartments[0].Id,
+                        Code = "DepartmentDiscipline001"
                     },
                     new() {
-                        DepartmentId = departments[1].Id,
-                        Code = "Discipline002"
+                        CompanyDepartmentId = companyDepartments[1].Id,
+                        Code = "DepartmentDiscipline002"
                     },
                     new() {
-                        DepartmentId = departments[2].Id,
-                        Code = "Discipline003"
+                        CompanyDepartmentId = companyDepartments[2].Id,
+                        Code = "DepartmentDiscipline003"
                     },
                     new() {
-                        DepartmentId = departments[3].Id,
-                        Code = "Discipline004"
+                        CompanyDepartmentId = companyDepartments[3].Id,
+                        Code = "DepartmentDiscipline004"
                     },
                     new() {
-                        DepartmentId = departments[4].Id,
-                        Code = "Discipline005"
+                        CompanyDepartmentId = companyDepartments[4].Id,
+                        Code = "DepartmentDiscipline005"
                     }
                 };
 
-                await _disciplineRepository.InsertManyAsync(entities, true);
+                await _departmentDisciplineRepository.InsertManyAsync(entities, true);
             }
         }
     }

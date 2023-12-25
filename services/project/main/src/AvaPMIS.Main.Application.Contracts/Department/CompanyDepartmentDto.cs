@@ -2,9 +2,9 @@
 using AvaPMIS.Main.Company;
 using Volo.Abp.Application.Dtos;
 
-namespace AvaPMIS.Main.Department
+namespace AvaPMIS.Main.CompanyDepartment
 {
-    public class DepartmentDto : ExtensibleEntityDto<Guid>
+    public class CompanyDepartmentDto : ExtensibleEntityDto<Guid>
     {
         public Guid CompanyId{ get; set; }
         public Nullable<Guid> ParentId  { get; set; }

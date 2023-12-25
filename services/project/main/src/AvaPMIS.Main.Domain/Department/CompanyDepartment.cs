@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace AvaPMIS.Main.Department
+namespace AvaPMIS.Main.CompanyDepartment
 {
-    public class Department : AuditedAggregateRoot<Guid>
+    public class CompanyDepartment : AuditedAggregateRoot<Guid>
     {
         public Nullable<Guid> ParentId { get; set; }
         public Guid CompanyId { get; set; }

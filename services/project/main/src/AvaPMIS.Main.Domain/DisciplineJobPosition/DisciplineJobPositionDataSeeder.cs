@@ -31,11 +31,11 @@ namespace AvaPMIS.Main.DisciplineJobPosition
                 {
                     new() {
                         DepartmentDisciplineId = disciplines[0].Id,
-                        Code = "JobPosition001"
+                        Code = "DisciplineJobPosition001"
                     },
                     new() {
                         DepartmentDisciplineId = disciplines[1].Id,
-                        Code = "JobPosition002"
+                        Code = "DisciplineJobPosition002"
                     },
                     new() {
                         DepartmentDisciplineId = disciplines[2].Id,
@@ -43,11 +43,11 @@ namespace AvaPMIS.Main.DisciplineJobPosition
                     },
                     new() {
                         DepartmentDisciplineId = disciplines[3].Id,
-                        Code = "JobPosition004"
+                        Code = "DisciplineJobPosition004"
                     },
                     new() {
                         DepartmentDisciplineId = disciplines[4].Id,
-                        Code = "JobPosition005"
+                        Code = "DisciplineJobPosition005"
                     }
                 };
 

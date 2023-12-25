@@ -4,57 +4,57 @@ using AvaPMIS.Main.Company;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace AvaPMIS.Main.Department
+namespace AvaPMIS.Main.CompanyDepartment
 {
-    public class DepartmentDataSeeder : IDepartmentDataSeeder, ITransientDependency
+    public class CompanyDepartmentDataSeeder : ICompanyDepartmentDataSeeder, ITransientDependency
     {
-        private readonly IDepartmentRepository _departmentRepository;
+        private readonly ICompanyDepartmentRepository _companyDepartmentRepository;
         private readonly ICompanyRepository _companyRepository;
 
-        public DepartmentDataSeeder(IDepartmentRepository departmentRepository, ICompanyRepository companyRepository)
+        public CompanyDepartmentDataSeeder(ICompanyDepartmentRepository companyDepartmentRepository, ICompanyRepository companyRepository)
         {
-            _departmentRepository = departmentRepository;
+            _companyDepartmentRepository = companyDepartmentRepository;
             _companyRepository = companyRepository;
         }
 
         public async Task SeedAsync(DataSeedContext context)
         {
-            var departments = await _departmentRepository.GetListAsync();
+            var departments = await _companyDepartmentRepository.GetListAsync();
 
             if (departments.Count == 0)
             {
                 var companies = await _companyRepository.GetListAsync();
 
-                var entities = new List<Department>
+                var entities = new List<CompanyDepartment>
                 {
                     new() {
                         ParentId = null,
                         CompanyId = companies[0].Id,
-                        Code = "Dept001"
+                        Code = "CompanyDept001"
                     },
                     new() {
                         ParentId = null,
                         CompanyId = companies[1].Id,
-                        Code = "Dept002"
+                        Code = "CompanyDept002"
                     },
                     new() {
                         ParentId = null,
                         CompanyId = companies[2].Id,
-                        Code = "Dept003"
+                        Code = "CompanyDept003"
                     },
                     new() {
                         ParentId = null,
                         CompanyId = companies[3].Id,
-                        Code = "Dept004"
+                        Code = "CompanyDept004"
                     },
                     new() {
                         ParentId = null,
                         CompanyId = companies[4].Id,
-                        Code = "Dept005"
+                        Code = "CompanyDept005"
                     }
                 };
 
-                await _departmentRepository.InsertManyAsync(entities, true);
+                await _companyDepartmentRepository.InsertManyAsync(entities, true);
             }
         }
     }

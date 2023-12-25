@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace AvaPMIS.Main.Department
+namespace AvaPMIS.Main.CompanyDepartment
 {
-    public class CreateUpdateDepartmentDto
+    public class CreateUpdateCompanyDepartmentDto
     {
         public Guid? ParentID { get; set; }
         public Guid CompanyId{ get; set; }

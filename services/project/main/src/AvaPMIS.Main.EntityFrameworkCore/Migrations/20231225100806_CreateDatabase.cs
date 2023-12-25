@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AvaPMIS.Main.Migrations
 {
     /// <inheritdoc />
-    public partial class MigrationsAdded : Migration
+    public partial class CreateDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,7 +53,7 @@ namespace AvaPMIS.Main.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Department",
+                name: "CompanyDepartment",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -69,9 +69,9 @@ namespace AvaPMIS.Main.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Department", x => x.Id);
+                    table.PrimaryKey("PK_CompanyDepartment", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Department_Company_CompanyId",
+                        name: "FK_CompanyDepartment_Company_CompanyId",
                         column: x => x.CompanyId,
                         principalTable: "Company",
                         principalColumn: "Id",
@@ -79,11 +79,11 @@ namespace AvaPMIS.Main.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Discipline",
+                name: "DepartmentDiscipline",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CompanyDepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
@@ -94,21 +94,21 @@ namespace AvaPMIS.Main.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Discipline", x => x.Id);
+                    table.PrimaryKey("PK_DepartmentDiscipline", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Discipline_Department_DepartmentId",
-                        column: x => x.DepartmentId,
-                        principalTable: "Department",
+                        name: "FK_DepartmentDiscipline_CompanyDepartment_CompanyDepartmentId",
+                        column: x => x.CompanyDepartmentId,
+                        principalTable: "CompanyDepartment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "JobPosition",
+                name: "DisciplineJobPosition",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DisciplineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DepartmentDisciplineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
@@ -122,11 +122,11 @@ namespace AvaPMIS.Main.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobPosition", x => x.Id);
+                    table.PrimaryKey("PK_DisciplineJobPosition", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JobPosition_Discipline_DisciplineId",
-                        column: x => x.DisciplineId,
-                        principalTable: "Discipline",
+                        name: "FK_DisciplineJobPosition_DepartmentDiscipline_DepartmentDisciplineId",
+                        column: x => x.DepartmentDisciplineId,
+                        principalTable: "DepartmentDiscipline",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -136,7 +136,7 @@ namespace AvaPMIS.Main.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    JobPositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DisciplineJobPositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Family = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NationalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -155,9 +155,9 @@ namespace AvaPMIS.Main.Migrations
                 {
                     table.PrimaryKey("PK_Person", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Person_JobPosition_JobPositionId",
-                        column: x => x.JobPositionId,
-                        principalTable: "JobPosition",
+                        name: "FK_Person_DisciplineJobPosition_DisciplineJobPositionId",
+                        column: x => x.DisciplineJobPositionId,
+                        principalTable: "DisciplineJobPosition",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -168,24 +168,24 @@ namespace AvaPMIS.Main.Migrations
                 columns: new[] { "IsAbandoned", "NextTryTime" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Department_CompanyId",
-                table: "Department",
+                name: "IX_CompanyDepartment_CompanyId",
+                table: "CompanyDepartment",
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Discipline_DepartmentId",
-                table: "Discipline",
-                column: "DepartmentId");
+                name: "IX_DepartmentDiscipline_CompanyDepartmentId",
+                table: "DepartmentDiscipline",
+                column: "CompanyDepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_JobPosition_DisciplineId",
-                table: "JobPosition",
-                column: "DisciplineId");
+                name: "IX_DisciplineJobPosition_DepartmentDisciplineId",
+                table: "DisciplineJobPosition",
+                column: "DepartmentDisciplineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Person_JobPositionId",
+                name: "IX_Person_DisciplineJobPositionId",
                 table: "Person",
-                column: "JobPositionId");
+                column: "DisciplineJobPositionId");
         }
 
         /// <inheritdoc />
@@ -198,13 +198,13 @@ namespace AvaPMIS.Main.Migrations
                 name: "Person");
 
             migrationBuilder.DropTable(
-                name: "JobPosition");
+                name: "DisciplineJobPosition");
 
             migrationBuilder.DropTable(
-                name: "Discipline");
+                name: "DepartmentDiscipline");
 
             migrationBuilder.DropTable(
-                name: "Department");
+                name: "CompanyDepartment");
 
             migrationBuilder.DropTable(
                 name: "Company");

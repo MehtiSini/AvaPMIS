@@ -6,7 +6,7 @@ using Volo.Abp.Domain.Repositories.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
 using AvaPMIS.Main.DisciplineJobPosition;
 
-namespace AvaPMIS.Main.JobPosition
+namespace AvaPMIS.Main.DisciplineJobPosition
 {
     public class EfDisciplineJobPositionRepository : EfCoreRepository<MainDbContext, Main.DisciplineJobPosition.DisciplineJobPosition, Guid>, IDisciplineJobPositionRepository
     {
@@ -16,7 +16,7 @@ namespace AvaPMIS.Main.JobPosition
 
         }
 
-        public async Task<IQueryable<DisciplineJobPosition.DisciplineJobPosition>> GetDisciplineJobPositionQuery(IQueryable<DisciplineJobPosition.DisciplineJobPosition> query)
+        public async Task<IQueryable<DisciplineJobPosition>> GetDisciplineJobPositionQuery(IQueryable<DisciplineJobPosition> query)
         { 
             return query;
         }

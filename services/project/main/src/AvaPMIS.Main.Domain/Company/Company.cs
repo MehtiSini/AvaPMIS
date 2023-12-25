@@ -10,7 +10,7 @@ namespace AvaPMIS.Main.Company
         public string Title { get; set; }
         public string RegisterationCode { get; set; }
 
-        public List<Department.Department> Departments { get; set; }
+        public List<CompanyDepartment.CompanyDepartment> CompanyDepartments { get; set; }
 
     }
 }

@@ -13,8 +13,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace AvaPMIS.Main.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20231224131758_MigrationsAdded")]
-    partial class MigrationsAdded
+    [Migration("20231225100806_CreateDatabase")]
+    partial class CreateDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,7 +74,7 @@ namespace AvaPMIS.Main.Migrations
                     b.ToTable("Company", (string)null);
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.Department.Department", b =>
+            modelBuilder.Entity("AvaPMIS.Main.CompanyDepartment.CompanyDepartment", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -120,16 +120,19 @@ namespace AvaPMIS.Main.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Department", (string)null);
+                    b.ToTable("CompanyDepartment", (string)null);
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.Discipline.Discipline", b =>
+            modelBuilder.Entity("AvaPMIS.Main.DepartmentDiscipline.DepartmentDiscipline", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("CompanyDepartmentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -146,9 +149,6 @@ namespace AvaPMIS.Main.Migrations
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("CreatorId");
 
-                    b.Property<Guid>("DepartmentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -164,12 +164,12 @@ namespace AvaPMIS.Main.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DepartmentId");
+                    b.HasIndex("CompanyDepartmentId");
 
-                    b.ToTable("Discipline", (string)null);
+                    b.ToTable("DepartmentDiscipline", (string)null);
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.JobPosition.JobPosition", b =>
+            modelBuilder.Entity("AvaPMIS.Main.DisciplineJobPosition.DisciplineJobPosition", b =>
                 {
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
@@ -200,7 +200,7 @@ namespace AvaPMIS.Main.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DeletionTime");
 
-                    b.Property<Guid>("DisciplineId")
+                    b.Property<Guid>("DepartmentDisciplineId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ExtraProperties")
@@ -224,9 +224,9 @@ namespace AvaPMIS.Main.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DisciplineId");
+                    b.HasIndex("DepartmentDisciplineId");
 
-                    b.ToTable("JobPosition", (string)null);
+                    b.ToTable("DisciplineJobPosition", (string)null);
                 });
 
             modelBuilder.Entity("AvaPMIS.Main.Person.Person", b =>
@@ -257,6 +257,9 @@ namespace AvaPMIS.Main.Migrations
                         .HasColumnType("datetime2")
                         .HasColumnName("DeletionTime");
 
+                    b.Property<Guid>("DisciplineJobPositionId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ExtraProperties")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
@@ -270,9 +273,6 @@ namespace AvaPMIS.Main.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false)
                         .HasColumnName("IsDeleted");
-
-                    b.Property<Guid>("JobPositionId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnType("datetime2")
@@ -293,7 +293,7 @@ namespace AvaPMIS.Main.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("JobPositionId");
+                    b.HasIndex("DisciplineJobPositionId");
 
                     b.ToTable("Person", (string)null);
                 });
@@ -357,10 +357,10 @@ namespace AvaPMIS.Main.Migrations
                     b.ToTable("AbpBackgroundJobs", (string)null);
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.Department.Department", b =>
+            modelBuilder.Entity("AvaPMIS.Main.CompanyDepartment.CompanyDepartment", b =>
                 {
                     b.HasOne("AvaPMIS.Main.Company.Company", "Company")
-                        .WithMany("Departments")
+                        .WithMany("CompanyDepartments")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -368,55 +368,55 @@ namespace AvaPMIS.Main.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.Discipline.Discipline", b =>
+            modelBuilder.Entity("AvaPMIS.Main.DepartmentDiscipline.DepartmentDiscipline", b =>
                 {
-                    b.HasOne("AvaPMIS.Main.Department.Department", "Department")
-                        .WithMany("Disciples")
-                        .HasForeignKey("DepartmentId")
+                    b.HasOne("AvaPMIS.Main.CompanyDepartment.CompanyDepartment", "CompanyDepartment")
+                        .WithMany("DepartmentDisciplines")
+                        .HasForeignKey("CompanyDepartmentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Department");
+                    b.Navigation("CompanyDepartment");
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.JobPosition.JobPosition", b =>
+            modelBuilder.Entity("AvaPMIS.Main.DisciplineJobPosition.DisciplineJobPosition", b =>
                 {
-                    b.HasOne("AvaPMIS.Main.Discipline.Discipline", "Discipline")
-                        .WithMany("JobPositions")
-                        .HasForeignKey("DisciplineId")
+                    b.HasOne("AvaPMIS.Main.DepartmentDiscipline.DepartmentDiscipline", "DepartmentDiscipline")
+                        .WithMany("DiciplineJobPositions")
+                        .HasForeignKey("DepartmentDisciplineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Discipline");
+                    b.Navigation("DepartmentDiscipline");
                 });
 
             modelBuilder.Entity("AvaPMIS.Main.Person.Person", b =>
                 {
-                    b.HasOne("AvaPMIS.Main.JobPosition.JobPosition", "JobPosition")
+                    b.HasOne("AvaPMIS.Main.DisciplineJobPosition.DisciplineJobPosition", "DisciplineJobPosition")
                         .WithMany("People")
-                        .HasForeignKey("JobPositionId")
+                        .HasForeignKey("DisciplineJobPositionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("JobPosition");
+                    b.Navigation("DisciplineJobPosition");
                 });
 
             modelBuilder.Entity("AvaPMIS.Main.Company.Company", b =>
                 {
-                    b.Navigation("Departments");
+                    b.Navigation("CompanyDepartments");
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.Department.Department", b =>
+            modelBuilder.Entity("AvaPMIS.Main.CompanyDepartment.CompanyDepartment", b =>
                 {
-                    b.Navigation("Disciples");
+                    b.Navigation("DepartmentDisciplines");
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.Discipline.Discipline", b =>
+            modelBuilder.Entity("AvaPMIS.Main.DepartmentDiscipline.DepartmentDiscipline", b =>
                 {
-                    b.Navigation("JobPositions");
+                    b.Navigation("DiciplineJobPositions");
                 });
 
-            modelBuilder.Entity("AvaPMIS.Main.JobPosition.JobPosition", b =>
+            modelBuilder.Entity("AvaPMIS.Main.DisciplineJobPosition.DisciplineJobPosition", b =>
                 {
                     b.Navigation("People");
                 });
