@@ -8,6 +8,12 @@ namespace AvaPMIS.Main.DefDiscipline
         public void Configure(EntityTypeBuilder<DefDiscipline> builder)
         {
             builder.ToTable("DefDiscipline");
+
+            builder.HasMany(x => x.DepartmentDisciplines)
+              .WithOne(x => x.DefDiscipline)
+              .HasForeignKey(x => x.DefDicsiplineId)
+              .IsRequired();
         }
+
     }
 }

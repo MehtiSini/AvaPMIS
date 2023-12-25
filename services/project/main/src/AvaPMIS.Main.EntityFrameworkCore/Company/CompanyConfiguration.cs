@@ -5,7 +5,7 @@ namespace AvaPMIS.Main.Company
 {
     public class CompanyConfiguration : IEntityTypeConfiguration<Main.Company.Company>
     {
-        public void Configure(EntityTypeBuilder<Main.Company.Company> builder)
+        public void Configure(EntityTypeBuilder<Company> builder)
         {
             builder.ToTable("Company");
 

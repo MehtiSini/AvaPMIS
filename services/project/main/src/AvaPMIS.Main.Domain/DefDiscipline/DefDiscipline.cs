@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
 
 namespace AvaPMIS.Main.DefDiscipline
@@ -7,6 +8,8 @@ namespace AvaPMIS.Main.DefDiscipline
     {
         public string Name { get; set; }
         public string Code { get; set; }
+
+        public List<DepartmentDiscipline.DepartmentDiscipline> DepartmentDisciplines  { get; set; }
 
     }
 }

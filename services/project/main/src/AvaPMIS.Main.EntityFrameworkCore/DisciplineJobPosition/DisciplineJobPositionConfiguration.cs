@@ -19,6 +19,13 @@ namespace AvaPMIS.Main.DisciplineJobPosition
                 HasForeignKey(x => x.DisciplineJobPositionId)
                 .IsRequired();
 
+
+            builder.HasOne(d => d.DefJobPosition)
+               .WithMany(d => d.DisciplineJobPositions).
+               HasForeignKey(x => x.DefJobPositionId)
+               .IsRequired();
+
+
         }
     }
 }

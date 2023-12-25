@@ -16,7 +16,12 @@ namespace AvaPMIS.Main.CompanyDepartment
 
             builder.HasMany(c => c.DepartmentDisciplines)
              .WithOne(d => d.CompanyDepartment)
-             .HasForeignKey(x=>x.CompanyDepartmentId);
+             .HasForeignKey(x => x.CompanyDepartmentId);
+
+            builder.HasOne(c => c.DefDepartment)
+         .WithMany(d => d.CompanyDepartments)
+         .HasForeignKey(x => x.DefDepartmentId);
+
         }
     }
 }

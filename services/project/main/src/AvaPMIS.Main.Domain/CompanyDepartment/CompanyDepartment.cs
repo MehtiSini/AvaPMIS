@@ -6,10 +6,12 @@ namespace AvaPMIS.Main.CompanyDepartment
 {
     public class CompanyDepartment : AuditedAggregateRoot<Guid>
     {
-        public Nullable<Guid> ParentId { get; set; }
+        public Guid DefDepartmentId{ get; set; }
         public Guid CompanyId { get; set; }
-        public string Code{ get; set; }
+        public Guid? ParentId { get; set; }
         public Company.Company Company{ get; set; }
         public List<DepartmentDiscipline.DepartmentDiscipline> DepartmentDisciplines { get; set; }
+        public DefDepartment.DefDepartment DefDepartment { get; set; }
+
     }
 }

@@ -8,6 +8,13 @@ namespace AvaPMIS.Main.DefDepartment
         public void Configure(EntityTypeBuilder<DefDepartment> builder)
         {
             builder.ToTable("DefDepartment");
+
+            builder.HasMany(x=>x.CompanyDepartments)
+                .WithOne(x=>x.DefDepartment)
+                .HasForeignKey(x=>x.DefDepartmentId)
+                .IsRequired();
+
+
         }
     }
 }

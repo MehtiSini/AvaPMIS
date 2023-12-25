@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using AvaPMIS.Main.DefJobPosition;
 using AvaPMIS.Main.DepartmentDiscipline;
+using AvaPMIS.Main.DisciplineJobPosition;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace AvaPMIS.Main.DisciplineJobPosition
 {
@@ -10,42 +14,58 @@ namespace AvaPMIS.Main.DisciplineJobPosition
     {
         private readonly IDisciplineJobPositionRepository _disciplineJobPositionRepository;
         private readonly IDepartmentDisciplineRepository _departmentDisciplineRepository;
+        private readonly IDefJobPositionRepository _defJobPositionRepository;
 
-        public DisciplineJobPositionDataSeeder(IDisciplineJobPositionRepository jobPositionRepository, IDepartmentDisciplineRepository disciplineRepository)
+        public DisciplineJobPositionDataSeeder(
+            IDisciplineJobPositionRepository disciplineJobPositionRepository,
+            IDepartmentDisciplineRepository departmentDisciplineRepository,
+            IDefJobPositionRepository defJobPositionRepository)
         {
-            _disciplineJobPositionRepository = jobPositionRepository;
-            _departmentDisciplineRepository = disciplineRepository;
+            _disciplineJobPositionRepository = disciplineJobPositionRepository;
+            _departmentDisciplineRepository = departmentDisciplineRepository;
+            _defJobPositionRepository = defJobPositionRepository;
         }
 
         public async Task SeedAsync(DataSeedContext context)
         {
-            var jobPositions = await _disciplineJobPositionRepository.GetListAsync();
+            var disciplineJobPositions = await _disciplineJobPositionRepository.GetListAsync();
 
-            if (jobPositions.Count == 0)
+            if (disciplineJobPositions.Count == 0)
             {
-                var disciplines = await _departmentDisciplineRepository.GetListAsync();
+                var departmentDisciplines = await _departmentDisciplineRepository.GetListAsync();
+                var defJobPositions = await _defJobPositionRepository.GetListAsync();
 
                 var entities = new List<DisciplineJobPosition>
                 {
-                    new() {
-                        DepartmentDisciplineId = disciplines[0].Id,
-                        Code = "DisciplineJobPosition001"
+                    new DisciplineJobPosition
+                    {
+                        DefJobPositionId = defJobPositions[0].Id,
+                        DepartmentDisciplineId = departmentDisciplines[0].Id,
+                        DefJobPosition = defJobPositions[0]
                     },
-                    new() {
-                        DepartmentDisciplineId = disciplines[1].Id,
-                        Code = "DisciplineJobPosition002"
+                    new DisciplineJobPosition
+                    {
+                        DefJobPositionId = defJobPositions[1].Id,
+                        DepartmentDisciplineId = departmentDisciplines[1].Id,
+                        DefJobPosition = defJobPositions[1]
                     },
-                    new() {
-                        DepartmentDisciplineId = disciplines[2].Id,
-                        Code = "JobPosition003"
+                    new DisciplineJobPosition
+                    {
+                        DefJobPositionId = defJobPositions[2].Id,
+                        DepartmentDisciplineId = departmentDisciplines[2].Id,
+                        DefJobPosition = defJobPositions[2]
                     },
-                    new() {
-                        DepartmentDisciplineId = disciplines[3].Id,
-                        Code = "DisciplineJobPosition004"
+                    new DisciplineJobPosition
+                    {
+                        DefJobPositionId = defJobPositions[3].Id,
+                        DepartmentDisciplineId = departmentDisciplines[3].Id,
+                        DefJobPosition = defJobPositions[3]
                     },
-                    new() {
-                        DepartmentDisciplineId = disciplines[4].Id,
-                        Code = "DisciplineJobPosition005"
+                    new DisciplineJobPosition
+                    {
+                        DefJobPositionId = defJobPositions[4].Id,
+                        DepartmentDisciplineId = departmentDisciplines[4].Id,
+                        DefJobPosition = defJobPositions[4]
                     }
                 };
 

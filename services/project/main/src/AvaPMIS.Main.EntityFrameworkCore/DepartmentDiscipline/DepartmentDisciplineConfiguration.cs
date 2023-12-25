@@ -9,10 +9,9 @@ namespace AvaPMIS.Main.DepartmentDiscipline
         {
             builder.ToTable("DepartmentDiscipline");
 
-            builder.HasOne(d => d.CompanyDepartment)
-                .WithMany(d => d.DepartmentDisciplines).
-                HasForeignKey(x=>x.CompanyDepartmentId)
-                .IsRequired();
+            builder.HasOne(c => c.DefDiscipline)
+     .WithMany(d => d.DepartmentDisciplines)
+     .HasForeignKey(x => x.DefDicsiplineId);
 
         }
     }

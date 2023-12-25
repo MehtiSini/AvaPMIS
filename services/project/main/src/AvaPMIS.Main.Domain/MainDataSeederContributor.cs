@@ -39,18 +39,18 @@ namespace AvaPMIS.Main
 
         public async Task SeedAsync(DataSeedContext context)
         {
-          
-            await _companyDataSeeder.SeedAsync(context);
-            await _companyDepartmentDataSeeder.SeedAsync(context);
-            await _depatrmentDisciplineDataSeeder.SeedAsync(context);
-            await _disciplineJobPositionDataSeeder.SeedAsync(context);
-            await _personDataSeeder.SeedAsync(context);
-
             ////
+            await _companyDataSeeder.SeedAsync(context);
+
             await _defDepartmentDataSeeder.SeedAsync(context);
             await _defDisciplineDataSeeder.SeedAsync(context);
             await _defJobPositionDataSeeder.SeedAsync(context);
 
+            await _companyDepartmentDataSeeder.SeedAsync(context);
+            await _depatrmentDisciplineDataSeeder.SeedAsync(context);
+            await _disciplineJobPositionDataSeeder.SeedAsync(context);
+            await _personDataSeeder.SeedAsync(context);
+          
         }
     }
 }

@@ -8,6 +8,12 @@ namespace AvaPMIS.Main.DefJobPosition
         public void Configure(EntityTypeBuilder<DefJobPosition> builder)
         {
             builder.ToTable("DefJobPosition");
+
+            builder.HasMany(x => x.DisciplineJobPositions)
+                .WithOne(x => x.DefJobPosition)
+                .HasForeignKey(x => x.DefJobPositionId)
+                .IsRequired();
+
         }
     }
 }

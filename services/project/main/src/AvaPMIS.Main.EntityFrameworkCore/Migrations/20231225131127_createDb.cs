@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AvaPMIS.Main.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDatabase : Migration
+    public partial class createDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -53,13 +53,70 @@ namespace AvaPMIS.Main.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DefDepartment",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DefDepartment", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DefDiscipline",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DefDiscipline", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DefJobPosition",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LastModificationTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifierId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DefJobPosition", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CompanyDepartment",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    DefDepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CompanyId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -76,6 +133,12 @@ namespace AvaPMIS.Main.Migrations
                         principalTable: "Company",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CompanyDepartment_DefDepartment_DefDepartmentId",
+                        column: x => x.DefDepartmentId,
+                        principalTable: "DefDepartment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,8 +146,8 @@ namespace AvaPMIS.Main.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DefDicsiplineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CompanyDepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -101,6 +164,12 @@ namespace AvaPMIS.Main.Migrations
                         principalTable: "CompanyDepartment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DepartmentDiscipline_DefDiscipline_DefDicsiplineId",
+                        column: x => x.DefDicsiplineId,
+                        principalTable: "DefDiscipline",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -108,8 +177,8 @@ namespace AvaPMIS.Main.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DefJobPositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DepartmentDisciplineId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ExtraProperties = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     CreationTime = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -123,6 +192,12 @@ namespace AvaPMIS.Main.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DisciplineJobPosition", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DisciplineJobPosition_DefJobPosition_DefJobPositionId",
+                        column: x => x.DefJobPositionId,
+                        principalTable: "DefJobPosition",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_DisciplineJobPosition_DepartmentDiscipline_DepartmentDisciplineId",
                         column: x => x.DepartmentDisciplineId,
@@ -173,9 +248,24 @@ namespace AvaPMIS.Main.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CompanyDepartment_DefDepartmentId",
+                table: "CompanyDepartment",
+                column: "DefDepartmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DepartmentDiscipline_CompanyDepartmentId",
                 table: "DepartmentDiscipline",
                 column: "CompanyDepartmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DepartmentDiscipline_DefDicsiplineId",
+                table: "DepartmentDiscipline",
+                column: "DefDicsiplineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DisciplineJobPosition_DefJobPositionId",
+                table: "DisciplineJobPosition",
+                column: "DefJobPositionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DisciplineJobPosition_DepartmentDisciplineId",
@@ -201,13 +291,22 @@ namespace AvaPMIS.Main.Migrations
                 name: "DisciplineJobPosition");
 
             migrationBuilder.DropTable(
+                name: "DefJobPosition");
+
+            migrationBuilder.DropTable(
                 name: "DepartmentDiscipline");
 
             migrationBuilder.DropTable(
                 name: "CompanyDepartment");
 
             migrationBuilder.DropTable(
+                name: "DefDiscipline");
+
+            migrationBuilder.DropTable(
                 name: "Company");
+
+            migrationBuilder.DropTable(
+                name: "DefDepartment");
         }
     }
 }

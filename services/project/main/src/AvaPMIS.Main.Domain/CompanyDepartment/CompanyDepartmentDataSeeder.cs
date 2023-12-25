@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AvaPMIS.Main.Company;
+using AvaPMIS.Main.CompanyDepartment;
+using AvaPMIS.Main.DefDepartment;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
+using Volo.Abp.Domain.Repositories;
 
 namespace AvaPMIS.Main.CompanyDepartment
 {
@@ -10,47 +14,59 @@ namespace AvaPMIS.Main.CompanyDepartment
     {
         private readonly ICompanyDepartmentRepository _companyDepartmentRepository;
         private readonly ICompanyRepository _companyRepository;
+        private readonly IDefDepartmentRepository _defDepartmentRepository;
 
-        public CompanyDepartmentDataSeeder(ICompanyDepartmentRepository companyDepartmentRepository, ICompanyRepository companyRepository)
+        public CompanyDepartmentDataSeeder(
+            ICompanyDepartmentRepository companyDepartmentRepository,
+            ICompanyRepository companyRepository,
+            IDefDepartmentRepository defDepartmentRepository)
         {
             _companyDepartmentRepository = companyDepartmentRepository;
             _companyRepository = companyRepository;
+            _defDepartmentRepository = defDepartmentRepository;
         }
 
         public async Task SeedAsync(DataSeedContext context)
         {
-            var departments = await _companyDepartmentRepository.GetListAsync();
+            var companyDepartments = await _companyDepartmentRepository.GetListAsync();
 
-            if (departments.Count == 0)
+            if (companyDepartments.Count == 0)
             {
                 var companies = await _companyRepository.GetListAsync();
+                var defDepartments = await _defDepartmentRepository.GetListAsync();
 
                 var entities = new List<CompanyDepartment>
                 {
-                    new() {
-                        ParentId = null,
+                    new CompanyDepartment
+                    {
+                        DefDepartmentId = defDepartments[0].Id,
                         CompanyId = companies[0].Id,
-                        Code = "CompanyDept001"
-                    },
-                    new() {
                         ParentId = null,
+                        DefDepartment = defDepartments[0]
+                    },
+                    new CompanyDepartment
+                    {
+                        DefDepartmentId = defDepartments[1].Id,
                         CompanyId = companies[1].Id,
-                        Code = "CompanyDept002"
+                        DefDepartment = defDepartments[1]
                     },
-                    new() {
-                        ParentId = null,
+                    new CompanyDepartment
+                    {
+                        DefDepartmentId = defDepartments[2].Id,
                         CompanyId = companies[2].Id,
-                        Code = "CompanyDept003"
+                        DefDepartment = defDepartments[2]
                     },
-                    new() {
-                        ParentId = null,
+                    new CompanyDepartment
+                    {
+                        DefDepartmentId = defDepartments[3].Id,
                         CompanyId = companies[3].Id,
-                        Code = "CompanyDept004"
+                        DefDepartment = defDepartments[3]
                     },
-                    new() {
-                        ParentId = null,
+                    new CompanyDepartment
+                    {
+                        DefDepartmentId = defDepartments[4].Id,
                         CompanyId = companies[4].Id,
-                        Code = "CompanyDept005"
+                        DefDepartment = defDepartments[4]
                     }
                 };
 

@@ -6,9 +6,8 @@ namespace AvaPMIS.Main.DisciplineJobPosition
 {
     public class DisciplineJobPositionDto : ExtensibleEntityDto<Guid>
     {
+        public Guid JobPositionId { get; set; }
         public Guid DepartmentDisciplineId { get; set; }
-        public string Code { get; set; }
-
         public DepartmentDisciplineDto DepartmentDiscipline   { get; set; }
     }   
 }

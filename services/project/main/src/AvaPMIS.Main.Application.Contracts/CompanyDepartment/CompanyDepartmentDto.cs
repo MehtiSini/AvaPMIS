@@ -6,10 +6,9 @@ namespace AvaPMIS.Main.CompanyDepartment
 {
     public class CompanyDepartmentDto : ExtensibleEntityDto<Guid>
     {
+        public Guid DepartmentId { get; set; }
         public Guid CompanyId{ get; set; }
-        public Nullable<Guid> ParentId  { get; set; }
-        public string Code { get; set; }
-
+        public Guid? ParentId  { get; set; }
         public CompanyDto Company{ get; set; }
 
     }
