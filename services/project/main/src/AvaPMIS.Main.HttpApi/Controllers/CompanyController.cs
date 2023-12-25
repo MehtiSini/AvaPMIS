@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.AspNetCore.Mvc;
+using static AvaPMIS.Main.Company.ICompanyAppService;
 
 namespace AvaPMIS.Main.Controllers
 {
@@ -62,6 +63,16 @@ namespace AvaPMIS.Main.Controllers
             return res;
 
         }
+
+        [HttpGet]
+        [Route("public/getdefs")]
+        public async Task<PagedResultDto<CombinedDataDto>> GetDefs([FromQuery] PagedAndSortedResultRequestDto input)
+        {
+            var res = await _companyAppService.GetAllDefs(input);
+            return res;
+
+        }
+
         #endregion
     }
 }
