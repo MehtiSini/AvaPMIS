@@ -2,6 +2,7 @@
 using AvaPMIS.Main.Company;
 using AvaPMIS.Main.CompanyDepartment;
 using AvaPMIS.Main.DefDepartment;
+using AvaPMIS.Main.DefDiscipline;
 using AvaPMIS.Main.DepartmentDiscipline;
 using AvaPMIS.Main.DisciplineJobPosition;
 using AvaPMIS.Main.Person;
@@ -16,12 +17,13 @@ namespace AvaPMIS.Main
         private readonly ICompanyDataSeeder _companyDataSeeder;
         private readonly IDefDepartmentDataSeeder _defDepartmentDataSeeder;
         private readonly ICompanyDepartmentDataSeeder _companyDepartmentDataSeeder;
+        private readonly IDefDisciplineDataSeeder _defDisciplineDataSeeder;
         private readonly IDepartmentDisciplineDataSeeder _depatrmentDisciplineDataSeeder ;
         private readonly IDisciplineJobPositionDataSeeder _disciplineJobPositionDataSeeder;
         private readonly IPersonDataSeeder _personDataSeeder;
 
 
-        public MainDataSeederContributor(ICompanyDataSeeder companyDataSeeder, ICompanyDepartmentDataSeeder departmentDataSeeder, IDepartmentDisciplineDataSeeder departmentDisciplineDataSeeder, IDisciplineJobPositionDataSeeder disciplineJobPositionDataSeeder, IPersonDataSeeder personDataSeeder, IDefDepartmentDataSeeder defDepartmentDataSeeder)
+        public MainDataSeederContributor(ICompanyDataSeeder companyDataSeeder, ICompanyDepartmentDataSeeder departmentDataSeeder, IDepartmentDisciplineDataSeeder departmentDisciplineDataSeeder, IDisciplineJobPositionDataSeeder disciplineJobPositionDataSeeder, IPersonDataSeeder personDataSeeder, IDefDepartmentDataSeeder defDepartmentDataSeeder, IDefDisciplineDataSeeder defDisciplineDataSeeder)
         {
             _companyDataSeeder = companyDataSeeder;
             _companyDepartmentDataSeeder = departmentDataSeeder;
@@ -29,6 +31,7 @@ namespace AvaPMIS.Main
             _disciplineJobPositionDataSeeder = disciplineJobPositionDataSeeder;
             _personDataSeeder = personDataSeeder;
             _defDepartmentDataSeeder = defDepartmentDataSeeder;
+            _defDisciplineDataSeeder = defDisciplineDataSeeder;
         }
 
         public async Task SeedAsync(DataSeedContext context)
@@ -42,6 +45,7 @@ namespace AvaPMIS.Main
 
             ////
             await _defDepartmentDataSeeder.SeedAsync(context);
+            await _defDisciplineDataSeeder.SeedAsync(context);
 
         }
     }
