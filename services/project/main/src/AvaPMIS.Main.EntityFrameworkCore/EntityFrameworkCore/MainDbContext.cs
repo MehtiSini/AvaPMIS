@@ -22,8 +22,8 @@ public class MainDbContext : AbpDbContext<MainDbContext>, IMainDbContext, IBackg
 
     public DbSet<Company.Company> Companies{ get; set; }
     public DbSet<Department.Department> Departments{ get; set; }
-    public DbSet<Discipline.Discipline> Disciplines{ get; set; }
-    public DbSet<JobPosition.JobPosition> JobPositions{ get; set; }
+    public DbSet<DepartmentDiscipline.DepartmentDiscipline> DepartmentDisciplines{ get; set; }
+    public DbSet<DisciplineJobPosition.DisciplineJobPosition> DisciplineJobPositions{ get; set; }
     public DbSet<Person.Person> People{ get; set; }
 
 

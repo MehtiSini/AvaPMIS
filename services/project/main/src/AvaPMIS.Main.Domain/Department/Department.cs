@@ -10,6 +10,6 @@ namespace AvaPMIS.Main.Department
         public Guid CompanyId { get; set; }
         public string Code{ get; set; }
         public Company.Company Company{ get; set; }
-        public List<Discipline.Discipline> Disciples { get; set; }
+        public List<DepartmentDiscipline.DepartmentDiscipline> DepartmentDisciplines { get; set; }
     }
 }

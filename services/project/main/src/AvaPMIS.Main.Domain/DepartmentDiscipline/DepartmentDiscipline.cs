@@ -2,14 +2,14 @@
 using System;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace AvaPMIS.Main.Discipline
+namespace AvaPMIS.Main.DepartmentDiscipline
 {
-    public class Discipline : AuditedAggregateRoot<Guid>
+    public class DepartmentDiscipline : AuditedAggregateRoot<Guid>
     {
         public Guid DepartmentId { get; set; }
         public string Code { get; set; }
         public Department.Department Department { get; set; }
-        public List<JobPosition.JobPosition> JobPositions{ get; set; }
+        public List<DisciplineJobPosition.DisciplineJobPosition> DiciplineJobPositions{ get; set; }
 
     }
 }

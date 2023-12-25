@@ -14,17 +14,17 @@ namespace AvaPMIS.Main
        
         private readonly ICompanyDataSeeder _companyDataSeeder;
         private readonly IDepartmentDataSeeder _departmentDataSeeder;
-        private readonly IDisciplineDataSeeder _disciplineDataSeeder ;
-        private readonly IJobPositionDataSeeder _jobPositionDataSeeder;
+        private readonly IDepartmentDisciplineDataSeeder _depatrmentDisciplineDataSeeder ;
+        private readonly IDisciplineJobPositionDataSeeder _disciplineJobPositionDataSeeder;
         private readonly IPersonDataSeeder _personDataSeeder;
 
 
-        public MainDataSeederContributor(ICompanyDataSeeder companyDataSeeder, IDepartmentDataSeeder departmentDataSeeder, IDisciplineDataSeeder disciplineDataSeeder, IJobPositionDataSeeder jobPositionDataSeeder, IPersonDataSeeder personDataSeeder)
+        public MainDataSeederContributor(ICompanyDataSeeder companyDataSeeder, IDepartmentDataSeeder departmentDataSeeder, IDepartmentDisciplineDataSeeder departmentDisciplineDataSeeder, IDisciplineJobPositionDataSeeder disciplineJobPositionDataSeeder, IPersonDataSeeder personDataSeeder)
         {
             _companyDataSeeder = companyDataSeeder;
             _departmentDataSeeder = departmentDataSeeder;
-            _disciplineDataSeeder = disciplineDataSeeder;
-            _jobPositionDataSeeder = jobPositionDataSeeder;
+            _depatrmentDisciplineDataSeeder = departmentDisciplineDataSeeder;
+            _disciplineJobPositionDataSeeder = disciplineJobPositionDataSeeder;
             _personDataSeeder = personDataSeeder;
         }
 
@@ -33,8 +33,8 @@ namespace AvaPMIS.Main
           
             await _companyDataSeeder.SeedAsync(context);
             await _departmentDataSeeder.SeedAsync(context);
-            await _disciplineDataSeeder.SeedAsync(context);
-            await _jobPositionDataSeeder.SeedAsync(context);
+            await _depatrmentDisciplineDataSeeder.SeedAsync(context);
+            await _disciplineJobPositionDataSeeder.SeedAsync(context);
             await _personDataSeeder.SeedAsync(context);
 
         }

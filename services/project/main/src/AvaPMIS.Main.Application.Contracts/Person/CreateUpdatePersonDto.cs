@@ -6,7 +6,7 @@ namespace AvaPMIS.Main.Person
 {
     public class CreateUpdatePersonDto
     {
-        public Guid JobPositionId { get; set; }
+        public Guid DisciplineJobPositionId { get; set; }
         public string Name { get; set; }
         public string Family { get; set; }
         public string NationalCode { get; set; }

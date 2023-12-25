@@ -7,7 +7,7 @@ namespace AvaPMIS.Main.Person
 {
     public class Person : AuditableAggregate<Guid>
     {
-        public Guid JobPositionId{ get; set; }
+        public Guid DisciplineJobPositionId{ get; set; }
         public string Name { get; set; }
 
         public string Family { get; set; }
@@ -19,6 +19,6 @@ namespace AvaPMIS.Main.Person
         [PersianMobileNumberValidator]
         public string Mobile { get; set; }
 
-        public JobPosition.JobPosition JobPosition{ get; set; }
+        public DisciplineJobPosition.DisciplineJobPosition DisciplineJobPosition{ get; set; }
     }
 }

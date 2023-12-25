@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using AvaPMIS.Main.Department;
+using AvaPMIS.Main.Discipline;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 
-namespace AvaPMIS.Main.Discipline
+namespace AvaPMIS.Main.DepartmentDiscipline
 {
-    public class DisciplineDataSeeder : IDisciplineDataSeeder, ITransientDependency
+    public class DepartmentDisciplineDataSeeder : IDepartmentDisciplineDataSeeder, ITransientDependency
     {
-        private readonly IDisciplineRepository _disciplineRepository;
-        private readonly IDepartmentRepository _departmentRepository;
+        private readonly IDepartmentDisciplineRepository _disciplineRepository;
+        private readonly IDepartmentDisciplineRepository _departmentRepository;
 
-        public DisciplineDataSeeder(IDisciplineRepository disciplineRepository, IDepartmentRepository departmentRepository)
+        public DepartmentDisciplineDataSeeder(IDepartmentDisciplineRepository disciplineRepository, IDepartmentDisciplineRepository departmentRepository)
         {
             _disciplineRepository = disciplineRepository;
             _departmentRepository = departmentRepository;
@@ -25,7 +25,7 @@ namespace AvaPMIS.Main.Discipline
             {
                 var departments = await _departmentRepository.GetListAsync();
 
-                var entities = new List<Discipline>
+                var entities = new List<DepartmentDiscipline>
                 {
                     new() {
                         DepartmentId = departments[0].Id,

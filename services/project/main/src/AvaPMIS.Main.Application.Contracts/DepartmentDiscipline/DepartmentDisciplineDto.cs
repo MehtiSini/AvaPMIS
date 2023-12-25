@@ -3,9 +3,9 @@ using AvaPMIS.Main.Department;
 using System;
 using Volo.Abp.Application.Dtos;
 
-namespace AvaPMIS.Main.Discipline
+namespace AvaPMIS.Main.DepartmentDiscipline
 {
-    public class DisciplineDto : ExtensibleEntityDto<Guid>
+    public class DepartmentDisciplineDto : ExtensibleEntityDto<Guid>
     {
         public Guid DepartmentId { get; set; }
         public string Code { get; set; }

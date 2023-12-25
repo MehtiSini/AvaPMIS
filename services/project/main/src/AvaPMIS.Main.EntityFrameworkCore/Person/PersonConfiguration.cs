@@ -9,9 +9,9 @@ namespace AvaPMIS.Main.Person
         {
             builder.ToTable("Person");
 
-            builder.HasOne(d => d.JobPosition)
+            builder.HasOne(d => d.DisciplineJobPosition)
                 .WithMany(d => d.People).
-                HasForeignKey(x => x.JobPositionId)
+                HasForeignKey(x => x.DisciplineJobPositionId)
                 .IsRequired();
 
         }

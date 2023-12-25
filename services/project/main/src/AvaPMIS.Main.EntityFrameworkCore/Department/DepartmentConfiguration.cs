@@ -14,7 +14,7 @@ namespace AvaPMIS.Main.Department
              .HasForeignKey(x => x.CompanyId)
                 .IsRequired();
 
-            builder.HasMany(c => c.Disciples)
+            builder.HasMany(c => c.DepartmentDisciplines)
              .WithOne(d => d.Department)
              .HasForeignKey(x=>x.DepartmentId);
         }
