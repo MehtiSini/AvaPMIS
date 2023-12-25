@@ -1,6 +1,5 @@
 ﻿using System;
 using AvaPMIS.Main.Entities;
-using AvaPMIS.Main.JobPosition;
 using Nozhan.Abp.Utilities.Extensions.DataAnnotations;
 
 namespace AvaPMIS.Main.Person

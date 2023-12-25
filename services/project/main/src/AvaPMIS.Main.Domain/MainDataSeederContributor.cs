@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using AvaPMIS.Main.Company;
 using AvaPMIS.Main.CompanyDepartment;
-using AvaPMIS.Main.Discipline;
-using AvaPMIS.Main.JobPosition;
+using AvaPMIS.Main.DefDepartment;
+using AvaPMIS.Main.DepartmentDiscipline;
+using AvaPMIS.Main.DisciplineJobPosition;
 using AvaPMIS.Main.Person;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
@@ -13,29 +14,34 @@ namespace AvaPMIS.Main
     {
        
         private readonly ICompanyDataSeeder _companyDataSeeder;
-        private readonly ICompanyDepartmentDataSeeder _companydepartmentDataSeeder;
+        private readonly IDefDepartmentDataSeeder _defDepartmentDataSeeder;
+        private readonly ICompanyDepartmentDataSeeder _companyDepartmentDataSeeder;
         private readonly IDepartmentDisciplineDataSeeder _depatrmentDisciplineDataSeeder ;
         private readonly IDisciplineJobPositionDataSeeder _disciplineJobPositionDataSeeder;
         private readonly IPersonDataSeeder _personDataSeeder;
 
 
-        public MainDataSeederContributor(ICompanyDataSeeder companyDataSeeder, ICompanyDepartmentDataSeeder departmentDataSeeder, IDepartmentDisciplineDataSeeder departmentDisciplineDataSeeder, IDisciplineJobPositionDataSeeder disciplineJobPositionDataSeeder, IPersonDataSeeder personDataSeeder)
+        public MainDataSeederContributor(ICompanyDataSeeder companyDataSeeder, ICompanyDepartmentDataSeeder departmentDataSeeder, IDepartmentDisciplineDataSeeder departmentDisciplineDataSeeder, IDisciplineJobPositionDataSeeder disciplineJobPositionDataSeeder, IPersonDataSeeder personDataSeeder, IDefDepartmentDataSeeder defDepartmentDataSeeder)
         {
             _companyDataSeeder = companyDataSeeder;
-            _companydepartmentDataSeeder = departmentDataSeeder;
+            _companyDepartmentDataSeeder = departmentDataSeeder;
             _depatrmentDisciplineDataSeeder = departmentDisciplineDataSeeder;
             _disciplineJobPositionDataSeeder = disciplineJobPositionDataSeeder;
             _personDataSeeder = personDataSeeder;
+            _defDepartmentDataSeeder = defDepartmentDataSeeder;
         }
 
         public async Task SeedAsync(DataSeedContext context)
         {
           
             await _companyDataSeeder.SeedAsync(context);
-            await _companydepartmentDataSeeder.SeedAsync(context);
+            await _companyDepartmentDataSeeder.SeedAsync(context);
             await _depatrmentDisciplineDataSeeder.SeedAsync(context);
             await _disciplineJobPositionDataSeeder.SeedAsync(context);
             await _personDataSeeder.SeedAsync(context);
+
+            ////
+            await _defDepartmentDataSeeder.SeedAsync(context);
 
         }
     }

@@ -1,5 +1,4 @@
-﻿using AvaPMIS.Main.JobPosition;
-using System;
+﻿using System;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 

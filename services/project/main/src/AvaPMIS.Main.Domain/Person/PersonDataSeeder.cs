@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AvaPMIS.Main.DisciplineJobPosition;
-using AvaPMIS.Main.JobPosition;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 

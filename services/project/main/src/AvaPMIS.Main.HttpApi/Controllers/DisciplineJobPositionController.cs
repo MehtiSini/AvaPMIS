@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AvaPMIS.Main.DisciplineJobPosition;
-using AvaPMIS.Main.JobPosition;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.Application.Dtos;

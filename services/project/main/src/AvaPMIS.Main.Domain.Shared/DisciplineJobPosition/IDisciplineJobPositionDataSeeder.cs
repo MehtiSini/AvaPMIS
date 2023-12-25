@@ -1,4 +1,4 @@
-﻿namespace AvaPMIS.Main.JobPosition
+﻿namespace AvaPMIS.Main.DisciplineJobPosition
 {
     public interface IDisciplineJobPositionDataSeeder : IMainDataSeeder
     {

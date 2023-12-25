@@ -1,6 +1,5 @@
 ﻿using System;
 using AvaPMIS.Main.DisciplineJobPosition;
-using AvaPMIS.Main.JobPosition;
 using Nozhan.Abp.Utilities.Extensions.DataAnnotations;
 using Volo.Abp.Application.Dtos;
 

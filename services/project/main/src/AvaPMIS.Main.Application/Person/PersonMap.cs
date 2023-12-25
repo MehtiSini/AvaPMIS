@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AvaPMIS.Main.JobPosition;
 using AvaPMIS.Main.Utility;
 
 namespace AvaPMIS.Main.Person

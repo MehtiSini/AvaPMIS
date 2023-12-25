@@ -1,5 +1,4 @@
 ﻿using AvaPMIS.Main.EntityFrameworkCore;
-using AvaPMIS.Main.JobPosition;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
