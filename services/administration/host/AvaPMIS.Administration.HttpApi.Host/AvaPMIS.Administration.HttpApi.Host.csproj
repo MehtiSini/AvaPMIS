@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>AvaPMIS.Administration</RootNamespace>
+        <PreserveCompilationReferences>true</PreserveCompilationReferences>
+        <UserSecretsId>AvaPMIS.Administration-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..\..</DockerfileContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\shared\AvaPMIS.Hosting.Shared\AvaPMIS.Hosting.Shared.csproj" />
+        <ProjectReference Include="..\..\..\identity\src\AvaPMIS.IdentityService.Application.Contracts\AvaPMIS.IdentityService.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\..\saas\src\AvaPMIS.SaaS.Application.Contracts\AvaPMIS.SaaS.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\src\AvaPMIS.Administration.HttpApi\AvaPMIS.Administration.HttpApi.csproj" />
+        <ProjectReference Include="..\..\src\AvaPMIS.Administration.Application\AvaPMIS.Administration.Application.csproj" />
+        <ProjectReference Include="..\..\src\AvaPMIS.Administration.EntityFrameworkCore\AvaPMIS.Administration.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Logs\**" />
+        <Content Remove="Logs\**" />
+        <EmbeddedResource Remove="Logs\**" />
+        <None Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+      <PackageReference Include="Volo.Abp.Identity.Domain" Version="7.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
+      <PackageReference Update="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+	      <PrivateAssets>all</PrivateAssets>
+	      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+</Project>

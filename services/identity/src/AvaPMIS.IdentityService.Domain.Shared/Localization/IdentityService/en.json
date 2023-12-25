@@ -1,0 +1,21 @@
+{
+  "culture": "en",
+  "texts": {
+
+    "PhoneNumberLogin": "Login by phone number",
+    "DuplicatePhoneNumber": "The phone number has been used by others",
+    "PhoneNumberStartsWithZero": "Phone number can not start with 0",
+    "PhoneNumberNotRegisterd": "There is not any registered user with requested phone number!",
+    "NonNumericPhoneNumber": "Non-numeric phone number is not allowed",
+    "Permission:UserLookup": "User lookup",
+    "RegisterCodeCacheSeconds": "Register Verification Code Cache Time In Seconds",
+    "DisplayName:IdentityService.PhoneNumberLogin.SmsRepetInterval": "SMS verification code validity(min)",
+    "Description:IdentityService.PhoneNumberLogin.SmsRepetInterval": "The valid time for the user to send SMS verification code, unit m, default 2min",
+    "DisplayName:IdentityService.PhoneNumberLogin.SmsUserSignin": "Signin sms template",
+    "Description:IdentityService.PhoneNumberLogin.SmsUserSignin": "When the user logs in, he/she should send the template number of the SMS verification code and fill in the template number of the corresponding cloud platform registration",
+
+    "IdentityService.PhoneNumberLogin:InvalidVerificationCode": "Invalid Verification Code",
+    "IdentityService.PhoneNumberLogin:InvalidCredential": "Invalid Credential",
+    "IdentityService.PhoneNumberLogin:InvalidPhoneNumberOrPassword": "Invalid PhoneNumber or Password"
+  }
+}

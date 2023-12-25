@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "AvaPMIS.SaaS": {
+      "path": "AvaPMIS.SaaS.abpmdl.json"
+    }
+  }
+}

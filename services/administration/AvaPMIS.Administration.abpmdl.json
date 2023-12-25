@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "AvaPMIS.Administration.Domain.Shared": {
+      "path": "src/AvaPMIS.Administration.Domain.Shared/AvaPMIS.Administration.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.Domain": {
+      "path": "src/AvaPMIS.Administration.Domain/AvaPMIS.Administration.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.Application.Contracts": {
+      "path": "src/AvaPMIS.Administration.Application.Contracts/AvaPMIS.Administration.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.Application": {
+      "path": "src/AvaPMIS.Administration.Application/AvaPMIS.Administration.Application.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.EntityFrameworkCore": {
+      "path": "src/AvaPMIS.Administration.EntityFrameworkCore/AvaPMIS.Administration.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.MongoDB": {
+      "path": "src/AvaPMIS.Administration.MongoDB/AvaPMIS.Administration.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.HttpApi": {
+      "path": "src/AvaPMIS.Administration.HttpApi/AvaPMIS.Administration.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.HttpApi.Client": {
+      "path": "src/AvaPMIS.Administration.HttpApi.Client/AvaPMIS.Administration.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.Administration.TestBase": {
+      "path": "test/AvaPMIS.Administration.TestBase/AvaPMIS.Administration.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.Administration.EntityFrameworkCore.Tests": {
+      "path": "test/AvaPMIS.Administration.EntityFrameworkCore.Tests/AvaPMIS.Administration.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.Administration.MongoDB.Tests": {
+      "path": "test/AvaPMIS.Administration.MongoDB.Tests/AvaPMIS.Administration.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.Administration.Domain.Tests": {
+      "path": "test/AvaPMIS.Administration.Domain.Tests/AvaPMIS.Administration.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.Administration.Application.Tests": {
+      "path": "test/AvaPMIS.Administration.Application.Tests/AvaPMIS.Administration.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.Administration.HttpApi.Host": {
+      "path": "host/AvaPMIS.Administration.HttpApi.Host/AvaPMIS.Administration.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "AvaPMIS.Administration.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/AvaPMIS.Administration.HttpApi.Client.ConsoleTestApp/AvaPMIS.Administration.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.Administration.IdentityServer": {
+      "path": "host/AvaPMIS.Administration.IdentityServer/AvaPMIS.Administration.IdentityServer.abppkg.json",
+      "folder": "host"
+    },
+    "AvaPMIS.Administration.Host.Shared": {
+      "path": "host/AvaPMIS.Administration.Host.Shared/AvaPMIS.Administration.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>AvaPMIS.Main</RootNamespace>
+        <PreserveCompilationReferences>true</PreserveCompilationReferences>
+        <UserSecretsId>AvaPMIS.Main-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..\..\..</DockerfileContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
+	        <PrivateAssets>all</PrivateAssets>
+	        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Volo.Abp.Identity.Domain" Version="7.4.0" />
+
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\..\shared\AvaPMIS.Hosting.Shared\AvaPMIS.Hosting.Shared.csproj" />
+        <ProjectReference Include="..\..\..\..\..\shared\Nozan.Utility.ApiResponseWrapper\Nozan.Utility.ApiResponseWrapper.csproj" />
+        <ProjectReference Include="..\..\..\..\administration\src\AvaPMIS.Administration.EntityFrameworkCore\AvaPMIS.Administration.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\..\..\saas\src\AvaPMIS.SaaS.EntityFrameworkCore\AvaPMIS.SaaS.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\src\AvaPMIS.Main.Application\AvaPMIS.Main.Application.csproj" />
+        <ProjectReference Include="..\..\src\AvaPMIS.Main.EntityFrameworkCore\AvaPMIS.Main.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\src\AvaPMIS.Main.HttpApi\AvaPMIS.Main.HttpApi.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Logs\**" />
+        <Content Remove="Logs\**" />
+        <EmbeddedResource Remove="Logs\**" />
+        <None Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
+      <PackageReference Update="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+
+    </ItemGroup>
+
+</Project>

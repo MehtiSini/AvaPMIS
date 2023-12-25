@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>AvaPMIS.IdentityService</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Account\AccountAppService.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+	    <PackageReference Include="EasyAbp.Abp.VerificationCode.Identity" Version="1.6.0" />
+        <PackageReference Include="Volo.Abp.Account.Application" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.AutoMapper" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.Ddd.Application" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.Identity.Application" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="7.4.0" />
+        <ProjectReference Include="..\..\..\..\shared\Nozhan.Abp.Utilities\Nozhan.Abp.Utilities.csproj" />
+        <ProjectReference Include="..\AvaPMIS.IdentityService.Application.Contracts\AvaPMIS.IdentityService.Application.Contracts.csproj" />
+        <ProjectReference Include="..\AvaPMIS.IdentityService.Domain\AvaPMIS.IdentityService.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
+      <PackageReference Update="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+</Project>

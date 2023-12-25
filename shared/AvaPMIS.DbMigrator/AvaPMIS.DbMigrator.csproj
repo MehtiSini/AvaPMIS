@@ -1,0 +1,60 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..\..</DockerfileContext>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="appsettings.json" />
+        <Content Include="appsettings.json">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        <None Remove="appsettings.secrets.json" />
+        <Content Include="appsettings.secrets.json">
+            <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="EFCore.AutomaticMigrations.NetTopologySuite" Version="7.0.5" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+        <PackageReference Include="OpenIddict.Abstractions" Version="4.8.0" />
+        <PackageReference Include="Serilog.Extensions.Logging" Version="7.0.0" />
+        <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+        <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.Autofac" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.PermissionManagement.Domain" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="7.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Logs\**" />
+        <Content Remove="Logs\**" />
+        <EmbeddedResource Remove="Logs\**" />
+        <None Remove="Logs\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\services\administration\src\AvaPMIS.Administration.Application.Contracts\AvaPMIS.Administration.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\services\identity\src\AvaPMIS.IdentityService.Application.Contracts\AvaPMIS.IdentityService.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\services\identity\src\AvaPMIS.IdentityService.EntityFrameworkCore\AvaPMIS.IdentityService.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\services\project\main\src\AvaPMIS.Main.Application.Contracts\AvaPMIS.Main.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\services\project\main\src\AvaPMIS.Main.EntityFrameworkCore\AvaPMIS.Main.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\..\services\saas\src\AvaPMIS.SaaS.Application.Contracts\AvaPMIS.SaaS.Application.Contracts.csproj" />
+        <ProjectReference Include="..\..\services\saas\src\AvaPMIS.SaaS.EntityFrameworkCore\AvaPMIS.SaaS.EntityFrameworkCore.csproj" />
+        <ProjectReference Include="..\AvaPMIS.Microservice.Shared\AvaPMIS.Microservice.Shared.csproj" />
+    </ItemGroup>
+
+</Project>

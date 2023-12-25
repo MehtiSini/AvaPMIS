@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>AvaPMIS.Administration</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.FeatureManagement.HttpApi.Client" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.Http.Client" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.PermissionManagement.HttpApi.Client" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.SettingManagement.HttpApi.Client" Version="7.4.0" />
+        <ProjectReference Include="..\AvaPMIS.Administration.Application.Contracts\AvaPMIS.Administration.Application.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="**\*generate-proxy.json" />
+        <Content Remove="**\*generate-proxy.json" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
+      <PackageReference Update="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+</Project>

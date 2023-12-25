@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "AvaPMIS.IdentityService": {
+      "path": "AvaPMIS.IdentityService.abpmdl.json"
+    }
+  }
+}

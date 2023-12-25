@@ -1,0 +1,79 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "AvaPMIS.IdentityService.Domain.Shared": {
+      "path": "src/AvaPMIS.IdentityService.Domain.Shared/AvaPMIS.IdentityService.Domain.Shared.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.Domain": {
+      "path": "src/AvaPMIS.IdentityService.Domain/AvaPMIS.IdentityService.Domain.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.Application.Contracts": {
+      "path": "src/AvaPMIS.IdentityService.Application.Contracts/AvaPMIS.IdentityService.Application.Contracts.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.Application": {
+      "path": "src/AvaPMIS.IdentityService.Application/AvaPMIS.IdentityService.Application.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.EntityFrameworkCore": {
+      "path": "src/AvaPMIS.IdentityService.EntityFrameworkCore/AvaPMIS.IdentityService.EntityFrameworkCore.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.MongoDB": {
+      "path": "src/AvaPMIS.IdentityService.MongoDB/AvaPMIS.IdentityService.MongoDB.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.HttpApi": {
+      "path": "src/AvaPMIS.IdentityService.HttpApi/AvaPMIS.IdentityService.HttpApi.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.HttpApi.Client": {
+      "path": "src/AvaPMIS.IdentityService.HttpApi.Client/AvaPMIS.IdentityService.HttpApi.Client.abppkg.json",
+      "folder": "src"
+    },
+    "AvaPMIS.IdentityService.TestBase": {
+      "path": "test/AvaPMIS.IdentityService.TestBase/AvaPMIS.IdentityService.TestBase.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.IdentityService.EntityFrameworkCore.Tests": {
+      "path": "test/AvaPMIS.IdentityService.EntityFrameworkCore.Tests/AvaPMIS.IdentityService.EntityFrameworkCore.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.IdentityService.MongoDB.Tests": {
+      "path": "test/AvaPMIS.IdentityService.MongoDB.Tests/AvaPMIS.IdentityService.MongoDB.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.IdentityService.Domain.Tests": {
+      "path": "test/AvaPMIS.IdentityService.Domain.Tests/AvaPMIS.IdentityService.Domain.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.IdentityService.Application.Tests": {
+      "path": "test/AvaPMIS.IdentityService.Application.Tests/AvaPMIS.IdentityService.Application.Tests.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.IdentityService.HttpApi.Host": {
+      "path": "host/AvaPMIS.IdentityService.HttpApi.Host/AvaPMIS.IdentityService.HttpApi.Host.abppkg.json",
+      "folder": "host"
+    },
+    "AvaPMIS.IdentityService.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/AvaPMIS.IdentityService.HttpApi.Client.ConsoleTestApp/AvaPMIS.IdentityService.HttpApi.Client.ConsoleTestApp.abppkg.json",
+      "folder": "test"
+    },
+    "AvaPMIS.IdentityService.IdentityServer": {
+      "path": "host/AvaPMIS.IdentityService.IdentityServer/AvaPMIS.IdentityService.IdentityServer.abppkg.json",
+      "folder": "host"
+    },
+    "AvaPMIS.IdentityService.Host.Shared": {
+      "path": "host/AvaPMIS.IdentityService.Host.Shared/AvaPMIS.IdentityService.Host.Shared.abppkg.json",
+      "folder": "host"
+    }
+  }
+}

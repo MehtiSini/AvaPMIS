@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>AvaPMIS.Administration</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <ProjectReference Include="..\AvaPMIS.Administration.EntityFrameworkCore.Tests\AvaPMIS.Administration.EntityFrameworkCore.Tests.csproj" />
+  </ItemGroup>
+
+</Project>

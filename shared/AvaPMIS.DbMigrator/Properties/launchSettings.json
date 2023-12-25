@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AvaPMIS.DbMigrator": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

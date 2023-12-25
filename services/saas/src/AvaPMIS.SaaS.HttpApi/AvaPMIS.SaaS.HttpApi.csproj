@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="..\..\common.props" />
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <RootNamespace>AvaPMIS.SaaS</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Volo.Abp.AspNetCore.Mvc" Version="7.4.0" />
+        <PackageReference Include="Volo.Abp.TenantManagement.HttpApi" Version="7.4.0" />
+        <ProjectReference Include="..\AvaPMIS.SaaS.Application.Contracts\AvaPMIS.SaaS.Application.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="ConfigureAwait.Fody" Version="3.3.2" />
+      <PackageReference Update="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
+</Project>
